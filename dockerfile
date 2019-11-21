@@ -1,8 +1,6 @@
-FROM httpd
-MAINTAINER honeyreddy
-RUN yum update -y && \
-    yum install -y
-COPY httpd-foreground /usr/local/bin/
+FROM centos:latest
+MAINTAINER honey
+RUN yum -y install httpd
+COPY index.html /var/www/html/
 EXPOSE 80
-CMD ["httpd-foreground"]
-
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]

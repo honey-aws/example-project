@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM alpine:latest
 MAINTAINER honey
 RUN yum -y install httpd
 COPY index.html /var/www/html/

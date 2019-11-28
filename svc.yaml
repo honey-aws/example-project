@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: apache-svc
+  namespace: honey
+  labels:
+  annotations:
+    # by default the type is elb (classic load balancer).
+    service.beta.kubernetes.io/aws-load-balancer-type: clb
+spec:
+  # this setting is to make sure the source IP address is preserved.
+  externalTrafficPolicy: Local
+  type: LoadBalancer
+  selector:
+    app: apache
+  ports:
+    - name: http
+      port: 80
+      targetPort: z8
